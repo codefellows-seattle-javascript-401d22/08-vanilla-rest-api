@@ -14,6 +14,13 @@ exports.createItem = function(schemaName, item) {
   return Promise.resolve(item);
 };
 
+exports.deleteItem = function(schemaName, id) {
+  if(!id) return Promise.reject(new Error('expected id'));
+  if(!schemaName) return Promise.reject(new Error('expected schema name'));
+
+  delete storage[schemaName][id];
+};
+
 exports.fetchItem = function(schemaName, id) {
   return new Promise((resolve, reject) => {
     if(!schemaName) return reject(new Error('expected schema name'));

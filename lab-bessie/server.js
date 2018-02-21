@@ -29,9 +29,17 @@ router.get('/api/strain', function(req, res) {
   res.end();
 });
 
+router.delete('/api/strain', function(req,res) {
+  if(req.url.query.id) {
+    storage.deleteItem('strain', req.url.query.id);
+    res.writeHead(204, {'Content-Type': 'text/plain'});
+    return;
+  }
+});
+
 router.post('/api/strain', function(req, res) {
   try {
-    var strain = new Strain(req.body.name, req.body.content);
+    var strain = new Strain(req.body.name, req.body.type);
     storage.createItem('strain', strain);
     res.writeHead(200, {'Content-Type':'text/plain'});
     res.write(JSON.stringify(strain));
