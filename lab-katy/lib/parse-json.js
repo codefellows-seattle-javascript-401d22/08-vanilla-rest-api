@@ -18,6 +18,7 @@ module.exports = function(req){
           reject(err);
         }
       });
+      
       req.on('error', err => {
         console.error(err);
         reject(err);
