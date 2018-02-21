@@ -11,7 +11,7 @@ router.get('/api/car', function(req, res){
   if(req.url.query.id){
     storage.fetchItem('car', req.url.query.id).then(car => {
       res.writeHead(200, {
-        'Content-Type': 'text.plain',
+        'Content-Type': 'text/plain',
       });
       res.write(JSON.stringify(car));
       res.end();
@@ -51,6 +51,25 @@ router.post('/api/car', function(req,res){
     res.write('bad request');
     res.end();
   }
+});
+
+router.delete('/api/car', function(req,res){
+  if(req.url.query.id){
+    storage.deleteItem('car', req.url.query.id).then(() => {
+      res.writeHead(204, {
+        'Content-Type': 'text/plain',
+      });
+      res.end();
+    }).catch(err => {
+      console.error(err);
+      res.writeHead(404, {
+        'Content-Type': 'text/plain',
+      });
+      res.write('route not found');
+      res.end();
+    });
+  }
+  return;
 });
 
 const server = http.createServer(router.route());

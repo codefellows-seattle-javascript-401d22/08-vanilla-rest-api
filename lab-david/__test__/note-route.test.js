@@ -37,4 +37,15 @@ describe('Note Routes', () => {
       });
     });
   });
+
+  describe('DELETE: /api/car', () => {
+    it('should return car - id has been deleted', (done) => {
+      request.delete(`localhost:3000/api/car?id=${car.id}`).end((err,res) => {
+        if(err) return done(err);
+        expect(res.status).toEqual(204);
+        expect(res.text).toBe('');
+        done();
+      });
+    });
+  });
 });
