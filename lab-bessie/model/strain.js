@@ -2,11 +2,11 @@
 
 const uuidv4 = require('uuid/v4');
 
-module.exports = function(name, content) {
+module.exports = function(name, type) {
   if(!name) throw new Error('expected name');
-  if(!content) throw new Error('expected content');
+  if(!type) throw new Error('expected type');
 
   this.id = uuidv4();
   this.name = name;
-  this.content = content;
+  this.type = type;
 };
