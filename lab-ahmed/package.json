@@ -1,0 +1,24 @@
+{
+  "name": "lab-ahmed",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "jest",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "uuid": "^3.2.1"
+  },
+  "devDependencies": {
+    "eslint": "^4.18.1",
+    "jest": "^22.4.0",
+    "superagent": "^3.8.2"
+  }
+}
