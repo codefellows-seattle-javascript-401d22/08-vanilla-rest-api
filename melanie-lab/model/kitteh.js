@@ -8,5 +8,5 @@ module.exports = function(name, content) {
 
   this.id = uuidv4();
   this.name = name;
-  this.content;
+  this.content = content;
 };

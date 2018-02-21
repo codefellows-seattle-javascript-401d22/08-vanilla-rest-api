@@ -19,10 +19,12 @@ exports.fetchItem = function(schemaName, id) {
     if (!schemaName) return reject(new Error('Expected schema name'));
     if (!id) return reject(new Error('Expected id'));
 
-    /* DOUBLE CHECK */
-    if (!storage[schemaName]) return reject(new Error('Schema not found'));
-    if (!storage[schemaName][id]) return reject(new Error('Schema id not found'));
+    let schema = storage[schemaName];
+    if (!schema) return reject(new Error('Schema not found'));
 
-    resolve(storage[schemaName][id]);
+    let item = schema[id];
+    if (!item) return reject(new Error('Schema id not found'));
+
+    resolve(item);
   });
 };

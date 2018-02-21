@@ -17,12 +17,32 @@ router.get('/api/kitteh', function(req, res) {
     })
     .catch( err => {
       res.writeHead(404, { 'Content-Type' : 'text/plain' })
+      res.write('Route not found');
+      res.end();
     })
+    return;
+  }
+  res.writeHead(400, { 'Content-Type' : 'text/plain' })
+  res.write('Bad request.');
+  res.end()
+})
+
+router.post('/api/kitteh', function(req, res) {
+  try {
+    let kitteh = new Kitteh(req.body.name, req.body.content);
+    storage.createItem('kitteh', kitteh);
+    res.writeHead(200, { 'Content-Type' : 'text/plain' })
+    res.write(JSON.stringify(kitteh));
+    res.end();
+  } catch (err) {
+    console.error(err);
+    res.writeHead(400, { 'Content-Type' : 'text/plain' })
+    res.write('Bad request');
+    res.end();
   }
 })
 
-
-const server = http.createServer();
+const server = http.createServer(router.route());
 
 server.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`)
