@@ -19,7 +19,8 @@
   "homepage": "https://github.com/ruskeezy/08-vanilla-rest-api#readme",
   "devDependencies": {
     "eslint": "^4.18.1",
-    "jest": "^22.4.0"
+    "jest": "^22.4.0",
+    "superagent": "^3.8.2"
   },
   "dependencies": {
     "uuid": "^3.2.1"
