@@ -47,7 +47,6 @@ exports.listItemIds = function(schemaName){
     var list = Object.keys(obj).map(key => {
       return key;
     });
-    console.log('list', list);
     return resolve(list);
   });
 };

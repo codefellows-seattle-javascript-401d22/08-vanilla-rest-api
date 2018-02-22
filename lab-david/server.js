@@ -26,6 +26,17 @@ router.get('/api/car', function(req, res){
     return;
   }
 
+
+  if(req.url.query.id === ''){
+    res.writeHead(400, {
+      'Content-Type': 'text/plain',
+    });
+  
+    res.write('bad request');
+    res.end();
+    return;
+  }
+
   if(req.url.query){
     storage.listItemIds('car').then(list => {
       res.writeHead(200, {
@@ -43,13 +54,6 @@ router.get('/api/car', function(req, res){
     });
     return;
   }
-
-  res.writeHead(400, {
-    'Content-Type': 'text/plain',
-  });
-
-  res.write('bad request');
-  res.end();
 });
 
 router.post('/api/car', function(req,res){

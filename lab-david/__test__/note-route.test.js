@@ -43,8 +43,16 @@ describe('Car Routes', () => {
     });
     it('should respond 400: bad request', (done) => {
       request.get('localhost:3000/api/car?id=').end((err,res) => {
-        expect(err.status).toEqual(400);
+        expect(res.status).toEqual(400);
         expect(res.text).toEqual('bad request');
+        done();
+      });
+    });
+    it('should return a list of storage ids', (done) => {
+      request.get('localhost:3000/api/car').end((err,res) => {
+        expect(err).toBe(null);
+        expect(res.status).toEqual(200);
+        expect(JSON.parse(res.text)).toEqual([`${car.id}`]);
         done();
       });
     });
