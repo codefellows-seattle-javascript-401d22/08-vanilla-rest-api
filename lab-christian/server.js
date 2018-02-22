@@ -38,7 +38,7 @@ router.delete('/api/cat', function(req, res) {
   if (req.url.query.id) {
     storage.deleteItem('cat', req.url.query.id)
       .then( () => {
-        res.writeHead(200, {
+        res.writeHead(204, {
           'Content-Type': 'text/plain'
         });
         res.write('cat deleted');
