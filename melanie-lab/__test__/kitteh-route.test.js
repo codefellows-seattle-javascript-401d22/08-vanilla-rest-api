@@ -42,8 +42,8 @@ describe('Kitteh Routes', function() {
     it('should return a 404 error if id not found', function(done) {
       request.delete(`localhost:3000/api/kitteh?id=1`)
         .end((err, res) => {
-          if (err) return done(err);
-          expect(res.status).toEqual(404);
+          expect(res.status).toBe(404);
+          expect(res.text).toEqual('Valid request, but id not found');
           done();
         });
     });

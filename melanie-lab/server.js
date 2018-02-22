@@ -52,16 +52,18 @@ router.delete('/api/kitteh', function(req, res) {
         res.write('Kitteh is all gone')
         res.end();
       })
-      .catch( () => {
+      .catch( err => {
         res.writeHead(400, { 'Content-Type': 'text/plain' })
         res.write('Bad request');
         res.end();
       })
     })
     .catch( err => {
-      res.writeHead(404, { 'Content-Type' : 'text/plain' })
-      res.write('id not found');
-      res.end();
+      if (err.message === 'Schema id not found') {
+        res.writeHead(404, { 'Content-Type' : 'text/plain' })
+        res.write('Valid request, but id not found');
+        res.end();
+      }
     })
   }
 })
