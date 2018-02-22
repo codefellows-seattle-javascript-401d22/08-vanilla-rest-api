@@ -8,6 +8,14 @@ describe('Note Routes', () => {
   var car = null;
 
   describe('POST: /api/car', () => {
+    it('should return 400: bad request', (done) => {
+      request.post('localhost:3000/api/car').send({
+      }).end((err,res) => {
+        expect(err.status).toEqual(400);
+        expect(res.text).toEqual('bad request');
+        done();
+      });
+    });
     it('should return a car', (done) => {
       request.post('localhost:3000/api/car').send({
         make: 'test make',
@@ -26,9 +34,23 @@ describe('Note Routes', () => {
   });
 
   describe('GET: /api/car', () => {
+    it('should respond 404: route not found', (done) => {
+      request.get('localhost:3000/api/car?id=8').end((err, res) => {
+        expect(err.status).toEqual(404);
+        expect(res.text).toEqual('route not found');
+        done();
+      });
+    });
+    it('should respond 400: bad request', (done) => {
+      request.get('localhost:3000/api/car?id=').end((err,res) => {
+        expect(err.status).toEqual(400);
+        expect(res.text).toEqual('bad request');
+        done();
+      })
+    })
     it('should return a car', (done) => {
       request.get(`localhost:3000/api/car?id=${car.id}`).end((err,res) => {
-        if(err) return done(err);
+        expect(err).toBe(null);
         expect(res.status).toEqual(200);
         expect(car.make).toEqual('test make');
         expect(car.model).toEqual('test model');
