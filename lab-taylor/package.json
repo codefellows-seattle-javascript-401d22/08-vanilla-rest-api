@@ -8,12 +8,12 @@
   },
   "dependencies": {
     "eslint": "^4.18.1",
-    "jest": "^22.4.0"
+    "uuid": "^3.2.1"
   },
     
   "devDependencies": {
     "superagent": "^3.8.2",
-    "uuid": "^3.2.1"
+    "jest": "^22.4.0"
   },
   "scripts": {
     "test": "jest",
@@ -24,3 +24,5 @@
   "author": "",
   "license": "ISC"
 }
+    
+    

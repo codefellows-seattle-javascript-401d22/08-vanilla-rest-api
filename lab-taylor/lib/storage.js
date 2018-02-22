@@ -29,6 +29,20 @@ exports.fetchItem = function(schemaName, id) {
   });
 };
 
+exports.fetchAll = function(schemaName) {
+  return new Promise ((resolve, reject) => {
+    if(!schemaName) return reject(new Error('expected schema name'));
+
+    var beers = [];
+
+    for(var prop in storage[schemaName]) {
+      beers.push(storage.schemaName[prop].id);
+    }
+
+    resolve(beers);
+  });
+};
+
 exports.deleteItem = function(schemaName, id) {
   return new Promise((resolve,reject) => {
     if(!schemaName) return reject(new Error('expected schema name'));

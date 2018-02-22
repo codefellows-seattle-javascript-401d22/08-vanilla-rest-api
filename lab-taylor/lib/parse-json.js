@@ -2,7 +2,7 @@
 
 module.exports = function(req) {
   return new Promise( (resolve, reject) => {
-    if(req.method === 'POST') {
+    if(req.method === 'POST' || req.method === 'PUT') {
       var body = '';
 
       req.on('data', data => {
