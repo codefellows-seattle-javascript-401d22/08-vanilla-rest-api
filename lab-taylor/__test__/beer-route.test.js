@@ -66,8 +66,27 @@ describe('Beer Routes', function() {
           done();
         });
     });
+    it('should return a 404 status', function(done) {
+      request.delete(`localhost:3000/api/candle?id=1234`)
+        .end((err,res) => {
+          console.log('result from del 404:', res);
+          expect(res.status).toEqual(404);
+          expect(res.text).toEqual('route not found');
+          done();
+        });
+    });
+    it('should return a 400 status', function(done) {
+      request.delete(`localhost:3000/api/beer?funk=cheah`)
+        .end( (err,res) => {
+          expect(res.status).toEqual(400);
+          expect(res.text).toEqual('bad request');
+          done();
+        });
+    });
   });
 });
+        
+  
 
 
           
