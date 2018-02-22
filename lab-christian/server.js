@@ -12,7 +12,7 @@ router.get('/api/cat', function(req, res) {
     storage.fetchItem('cat', req.url.query.id)
       .then( cat => {
         res.writeHead(200, {
-          'Content-Type': 'text/plain'
+          'Content-Type': 'text/plain',
         });
         res.write(JSON.stringify(cat));
         res.end();
@@ -20,15 +20,15 @@ router.get('/api/cat', function(req, res) {
       .catch( err => {
         console.error(err);
         res.writeHead(404, {
-          'Content-Type': 'text/plain'
+          'Content-Type': 'text/plain',
         });
         res.write('route not found');
         res.end();
       });
-      return;
+    return;
   }
   res.writeHead(400, {
-    'Content-Type': 'text/plain'
+    'Content-Type': 'text/plain',
   });
   res.write('bad request');
   res.end();
@@ -46,7 +46,7 @@ router.delete('/api/cat', function(req, res) {
       })
       .catch( err => {
         res.writeHead(400, {
-          'Content-Type': 'text/plain'
+          'Content-Type': 'text/plain',
         });
         res.write('bad request');
         res.end();
@@ -59,7 +59,7 @@ router.post('/api/cat', function(req, res) {
     var cat = new Cat(req.body.name, req.body.color);
     storage.createItem('cat', cat);
     res.writeHead(200, {
-      'Content-Type': 'text/plain'
+      'Content-Type': 'text/plain',
     });
 
     res.write(JSON.stringify(cat));
@@ -67,7 +67,7 @@ router.post('/api/cat', function(req, res) {
   } catch (err) {
     console.error(err);
     res.writeHead(400, {
-      'Content-Type': 'text/plain'
+      'Content-Type': 'text/plain',
     });
     res.write('bad request');
     res.end();
@@ -77,5 +77,5 @@ router.post('/api/cat', function(req, res) {
 const server = http.createServer(router.route());
 
 server.listen(PORT, () => {
-  console.log(`Server up on PORT ${PORT}`)
+  console.log(`Server up on PORT ${PORT}`);
 });
