@@ -1,0 +1,21 @@
+{
+  "name": "lab-greg",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "lint": "eslint",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^22.4.0"
+  },
+  "dependencies": {
+    "eslintrc": "^1.0.4",
+    "uuid": "^3.2.1"
+  }
+}
