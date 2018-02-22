@@ -13,7 +13,7 @@ module.exports = function(req) {
         try {
           req.body = JSON.parse(body);
           resolve(req);
-        } catch(err) {
+        } catch (err) {
           console.error(err);
           reject(err);
         }
