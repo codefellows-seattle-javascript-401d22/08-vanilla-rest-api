@@ -34,6 +34,26 @@ router.get('/api/cat', function(req, res) {
   res.end();
 });
 
+router.delete('/api/cat', function(req, res) {
+  if (req.url.query.id) {
+    storage.deleteItem('cat', req.url.query.id)
+      .then( () => {
+        res.writeHead(200, {
+          'Content-Type': 'text/plain'
+        });
+        res.write('cat deleted');
+        res.end();
+      })
+      .catch( err => {
+        res.writeHead(400, {
+          'Content-Type': 'text/plain'
+        });
+        res.write('bad request');
+        res.end();
+      });
+  };
+});
+
 router.post('/api/cat', function(req, res) {
   try {
     var cat = new Cat(req.body.name, req.body.color);
