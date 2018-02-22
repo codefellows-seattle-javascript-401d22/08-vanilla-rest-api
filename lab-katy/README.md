@@ -1,0 +1,1 @@
+This is a simple, single resource API built for our 401 Full-stack Javascript cohort at CodeFellows.  This API is modeled off Express (though much simpler) to teach us about the middleware we're using to build our applications.  
