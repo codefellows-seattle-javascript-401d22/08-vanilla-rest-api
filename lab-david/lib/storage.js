@@ -37,3 +37,17 @@ exports.deleteItem = function(schemaName, id){
     return resolve({ ans: `${schemaName} - ${id} has been deleted`});
   });
 };
+
+exports.listItemIds = function(schemaName){
+  return new Promise((resolve, reject) => {
+    if(!schemaName) return reject(new Error('expected schema name'));
+    if(!storage[schemaName]) return reject(new Error('schema does not exist'));
+
+    var obj = storage[schemaName];
+    var list = Object.keys(obj).map(key => {
+      return key;
+    });
+    console.log('list', list);
+    return resolve(list);
+  });
+};

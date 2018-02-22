@@ -26,6 +26,24 @@ router.get('/api/car', function(req, res){
     return;
   }
 
+  if(req.url.query){
+    storage.listItemIds('car').then(list => {
+      res.writeHead(200, {
+        'Content-Type': 'text/plain',
+      });
+      res.write(JSON.stringify(list));
+      res.end();
+    }).catch(err => {
+      console.error(err);
+      res.writeHead(404, {
+        'Content-Type': 'text/plain',
+      });
+      res.write('route not found');
+      res.end();
+    });
+    return;
+  }
+
   res.writeHead(400, {
     'Content-Type': 'text/plain',
   });

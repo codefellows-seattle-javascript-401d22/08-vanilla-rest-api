@@ -4,7 +4,7 @@ const request = require('superagent');
 require('jest');
 require('../server.js');
 
-describe('Note Routes', () => {
+describe('Car Routes', () => {
   var car = null;
 
   describe('POST: /api/car', () => {
@@ -46,8 +46,8 @@ describe('Note Routes', () => {
         expect(err.status).toEqual(400);
         expect(res.text).toEqual('bad request');
         done();
-      })
-    })
+      });
+    });
     it('should return a car', (done) => {
       request.get(`localhost:3000/api/car?id=${car.id}`).end((err,res) => {
         expect(err).toBe(null);
