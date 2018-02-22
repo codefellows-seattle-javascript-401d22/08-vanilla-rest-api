@@ -14,13 +14,13 @@ module.exports = function(req) {
           req.body = JSON.parse(body);
           resolve(req);
         } catch (err) {
-          console.error(err);
+          console.error(err.message);
           reject(err);
         }
       });
 
       req.on('error', err=> {
-        console.error(err);
+        console.error(err.message);
         reject(err);
       });
 

@@ -16,6 +16,7 @@ router.get('/api/kitteh', function(req, res) {
       res.end()
     })
     .catch( err => {
+      console.log(err.message)
       res.writeHead(404, { 'Content-Type' : 'text/plain' })
       res.write('Route not found');
       res.end();
@@ -23,21 +24,25 @@ router.get('/api/kitteh', function(req, res) {
     return;
   }
   res.writeHead(400, { 'Content-Type' : 'text/plain' })
-  res.write('Bad request.');
+  res.write('Bad request');
   res.end()
 })
 
 router.post('/api/kitteh', function(req, res) {
   try {
-    let kitteh = new Kitteh(req.body.name, req.body.content);
+    var kitteh = new Kitteh(req.body.name, req.body.content)
     storage.createItem('kitteh', kitteh);
-    res.writeHead(200, { 'Content-Type' : 'text/plain' })
-    res.write(JSON.stringify(kitteh));
+    res.writeHead(200, {
+      'Content-Type':'text/plain'
+    })
+    res.write(JSON.stringify(kitteh))
     res.end();
   } catch (err) {
-    console.error(err);
-    res.writeHead(400, { 'Content-Type' : 'text/plain' })
-    res.write('Bad request');
+    console.error(err.message);
+    res.writeHead(400, {
+      'Content-Type':'text/plain'
+    })
+    res.write('Bad request')
     res.end();
   }
 })
@@ -65,6 +70,11 @@ router.delete('/api/kitteh', function(req, res) {
         res.end();
       }
     })
+  }
+  if (!req.url.query.id) {
+    res.writeHead(400, { 'Content-Type': 'text/plain' })
+    res.write('Bad request');
+    res.end();
   }
 })
 

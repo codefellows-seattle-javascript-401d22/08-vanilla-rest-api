@@ -45,7 +45,7 @@ Router.prototype.route = function() {
         res.end();
       })
       .catch( err => {
-        console.error(err);
+        console.error(err.message);
         res.writeHead(404, { 'Content-Type' : 'text/plain' });
         res.write('Bad request.');
         res.end();
