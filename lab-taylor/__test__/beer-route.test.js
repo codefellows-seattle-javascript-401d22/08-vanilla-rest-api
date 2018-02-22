@@ -4,8 +4,6 @@ const request = require('superagent');
 require('../server.js');
 require('jest');
 
-
-
 describe('Beer Routes', function() {
   var beer = null;
   describe('POST: /api/beer', function() {
@@ -70,6 +68,8 @@ describe('Beer Routes', function() {
     });
   });
 });
+
+
           
           
           

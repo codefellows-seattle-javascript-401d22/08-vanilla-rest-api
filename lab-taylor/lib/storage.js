@@ -13,7 +13,7 @@ exports.createItem = function(schemaName, item) {
   
   return Promise.resolve(item);
 };
-
+  
 exports.fetchItem = function(schemaName, id) {
   return new Promise((resolve,reject) => {
     if(!schemaName) return reject(new Error('expected schema name'));
