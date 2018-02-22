@@ -14,7 +14,6 @@ router.get('/api/beer', function(req,res) {
         res.writeHead(200, {
           'Content-Type': 'text/plain',
         });
-
         res.write(JSON.stringify(beer));
         res.end();
       })
@@ -61,7 +60,6 @@ router.delete('/api/beer', function(req,res) {
         res.writeHead(204, {
           'Content-Type': 'text/plain',
         });
-        
         res.end();
       })
       .catch( err => {
@@ -80,13 +78,15 @@ router.delete('/api/beer', function(req,res) {
   res.write('bad request');
   res.end();
 });
-      
-    
-
 
 const server = http.createServer(router.route());
 
 server.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
 });
+        
+      
+    
+
+
 
