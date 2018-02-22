@@ -4,7 +4,7 @@ This is a simple, single-resource API utilizing a RESTful  architectural style. 
 
 ### Beer Constructor 
 
-The beer contructor accepts `{ name: <beername>, style:<beerstyle>}`, and instaniates a beer object which will be stored within an in-app persistance layer until it is deleted or the server is shut off.
+The beer contructor accepts `{ name: <beername>, style:<beerstyle>}`, and instaniates a beer object which will be stored within an in-memory persistance layer until it is deleted or the server is shut off.
 
 
 
