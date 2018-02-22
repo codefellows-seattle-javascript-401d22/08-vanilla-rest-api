@@ -20,6 +20,15 @@ describe('cat routes', function() {
           done();
         });
     });
+    it('should return with a 400-bad request if no request body was provided', function(done) {
+      request.post('localhost:3000/api/cat')
+        .send( { name: 'not marco' } )
+        .end((err, res) => {
+          expect(res.status).toEqual(400);
+          expect(res.text).toEqual('bad request');
+          done();
+        });
+    });
   });
 
   describe('GET: /api.cat', function() {
