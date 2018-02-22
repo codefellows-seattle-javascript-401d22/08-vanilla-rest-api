@@ -26,12 +26,34 @@ router.get('/api/car', function(req, res){
     return;
   }
 
-  res.writeHead(400, {
-    'Content-Type': 'text/plain',
-  });
 
-  res.write('bad request');
-  res.end();
+  if(req.url.query.id === ''){
+    res.writeHead(400, {
+      'Content-Type': 'text/plain',
+    });
+  
+    res.write('bad request');
+    res.end();
+    return;
+  }
+
+  if(req.url.query){
+    storage.listItemIds('car').then(list => {
+      res.writeHead(200, {
+        'Content-Type': 'text/plain',
+      });
+      res.write(JSON.stringify(list));
+      res.end();
+    }).catch(err => {
+      console.error(err);
+      res.writeHead(404, {
+        'Content-Type': 'text/plain',
+      });
+      res.write('route not found');
+      res.end();
+    });
+    return;
+  }
 });
 
 router.post('/api/car', function(req,res){
