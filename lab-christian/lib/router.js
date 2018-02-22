@@ -48,7 +48,7 @@ Router.prototype.route = function() {
         
         res.write('route not found');
         res.end();
-      });
+      })
       .catch( (err) => {
         console.error(err);
         res.writeHead(400, {
