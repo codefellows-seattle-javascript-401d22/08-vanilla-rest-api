@@ -42,8 +42,32 @@ router.post('/api/kitteh', function(req, res) {
   }
 })
 
+router.delete('/api/kitteh', function(req, res) {
+  if (req.url.query.id) {
+    storage.fetchItem('kitteh', req.url.query.id)
+    .then( kitteh => {
+      storage.deleteItem('kitteh', req.url.query.id)
+      .then( () => {
+        res.writeHead(200, { 'Content-Type': 'text/plain' })
+        res.write('Kitteh is all gone')
+        res.end();
+      })
+      .catch( () => {
+        res.writeHead(400, { 'Content-Type': 'text/plain' })
+        res.write('Bad request');
+        res.end();
+      })
+    })
+    .catch( err => {
+      res.writeHead(404, { 'Content-Type' : 'text/plain' })
+      res.write('id not found');
+      res.end();
+    })
+  }
+})
+
 const server = http.createServer(router.route());
 
 server.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`)
-})
+});
