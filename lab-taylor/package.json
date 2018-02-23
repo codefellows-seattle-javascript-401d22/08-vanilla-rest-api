@@ -1,0 +1,28 @@
+{
+  "name": "lab-taylor",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "dependencies": {
+    "eslint": "^4.18.1",
+    "uuid": "^3.2.1"
+  },
+    
+  "devDependencies": {
+    "superagent": "^3.8.2",
+    "jest": "^22.4.0"
+  },
+  "scripts": {
+    "test": "jest",
+    "start": "node server.js",
+    "lint": "eslint ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
+    
+    
