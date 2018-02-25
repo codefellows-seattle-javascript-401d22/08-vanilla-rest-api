@@ -13,8 +13,6 @@ describe('Job Routes', function() {
         .end((err, res) => {
           if(err) return done(err);
           job = JSON.parse(res.text);
-          // console.log('res: ', res);
-          // console.log('res text: ', res.text);
           expect(res.status).toEqual(200);
           expect(job.title).toEqual('test title');
           expect(job.salary).toEqual('$100,000');
@@ -54,15 +52,15 @@ describe('Job Routes', function() {
         });
     });
   });
-  describe('GET: /api/job', function() {
-    it('should return a 400 error', function(done) {
+
+  describe('GET: /api/job', () => {
+    it('should return all jobs', (done) => {
       request.get('localhost:3000/api/job')
         .end((err, res) => {
-          expect(res.status).toEqual(400);
+          expect(err).toBe(null);
+          expect(res.status).toEqual(200);
           done();
         });
     });
   });
-
-
 });
