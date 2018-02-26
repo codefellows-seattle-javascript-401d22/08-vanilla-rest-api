@@ -34,6 +34,15 @@ exports.fetchItem = function(schemaName, id) {
 exports.deleteItem = function(schemaName, id) {
   if (!schemaName) return Promise.reject(new Error('expected schema name'));
   if (!id) return Promise.reject(new Error('expected id'));
-
   
+  // looked up how to delete files using FS, found a solution using "unlink" method.
+  let deleted = function(err) {
+    if (err) {
+      console.log('unlink failed', err);
+    } else {
+      console.log('file successfully deleted');
+    }
+  };
+  
+  fs.unlink(`${__dirname}/../data/${schemaName}/${id}.json`, deleted);
 };
