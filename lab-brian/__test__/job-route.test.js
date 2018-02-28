@@ -6,6 +6,7 @@ require('../server.js');
 
 describe('Job Routes', function() {
   var job = null;
+  
   describe('POST: /api/job', function() {
     it('should post and return a note', function(done) {
       request.post('localhost:3000/api/job')
@@ -20,6 +21,7 @@ describe('Job Routes', function() {
         });
     });
   });
+
   describe('POST: /api/job', function() {
     it('should not post and return a 400 error', function(done) {
       request.post('localhost:3000/api/job')
@@ -30,6 +32,7 @@ describe('Job Routes', function() {
         });
     });
   });
+
   describe('GET: /api/job', function() {
     it('should return a job', function(done) {
       request.get(`localhost:3000/api/job?id=${job.id}`)
@@ -43,6 +46,7 @@ describe('Job Routes', function() {
         });
     });
   });
+
   describe('GET: /api/job', function() {
     it('should return a 404 error', function(done) {
       request.get('localhost:3000/api/job?id=12')
@@ -53,9 +57,19 @@ describe('Job Routes', function() {
     });
   });
 
-  describe('GET: /api/job', () => {
-    it('should return all jobs', (done) => {
+  describe('GET: /api/job', function() {
+    it('should return a 400 error', function(done) {
       request.get('localhost:3000/api/job')
+        .end((err, res) => {
+          expect(res.status).toEqual(400);
+          done();
+        });
+    });
+  });
+
+  describe('GET: /api/jobs', () => {
+    it('should return all jobs', (done) => {
+      request.get('localhost:3000/api/jobs')
         .end((err, res) => {
           expect(err).toBe(null);
           expect(res.status).toEqual(200);
@@ -63,4 +77,6 @@ describe('Job Routes', function() {
         });
     });
   });
+
+
 });
