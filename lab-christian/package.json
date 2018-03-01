@@ -1,0 +1,30 @@
+{
+  "name": "08-vanilla-rest-api",
+  "version": "1.0.0",
+  "description": "![cf](https://i.imgur.com/7v5ASc8.png) Lab 08: Vanilla REST API ======",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "lint": "eslint ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ruskeezy/08-vanilla-rest-api.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ruskeezy/08-vanilla-rest-api/issues"
+  },
+  "homepage": "https://github.com/ruskeezy/08-vanilla-rest-api#readme",
+  "devDependencies": {
+    "eslint": "^4.18.1",
+    "jest": "^22.4.0",
+    "superagent": "^3.8.2"
+  },
+  "dependencies": {
+    "bluebird": "^3.5.1",
+    "uuid": "^3.2.1"
+  }
+}
