@@ -31,14 +31,16 @@ describe('cat routes', function() {
     });
   });
 
-  describe('GET: /api/cat', function() {
+  describe('GET: /api/cat?id', function() {
     it('should return a cat', function(done) {
       request.get(`localhost:3000/api/cat?id=${cat.id}`)
         .end((err, res) => {
+          console.log(cat);
           if (err) return done(err);
           expect(res.status).toEqual(200);
-          expect(cat.name).toEqual('marco');
-          expect(cat.color).toEqual('black');
+          expect(res.body.name).toEqual('marco');
+          expect(res.body.color).toEqual('black');
+          console.log(res.body);
           done();
         });
     });
