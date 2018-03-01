@@ -10,29 +10,29 @@ const router = new Router();
 router.get('/api/car', function(req, res) {
   if (req.url.query.id) {
     storage.fetchItem('car', req.url.query.id)
-    .then( car => {
-      res.writeHead(200, {
-        'Content-Type': 'text/plain'
-      });
+      .then( car => {
+        res.writeHead(200, {
+          'Content-Type': 'text/plain',
+        });
 
-      res.write(JSON.stringify(car));
-      res.end();
-    })
-    .catch( err => {
-      console.error(err);
-      res.writeHead(404, {
-        'Content-Type': 'text/plain'
-      });
+        res.write(JSON.stringify(car));
+        res.end();
+      })
+      .catch( err => {
+        console.error(err);
+        res.writeHead(404, {
+          'Content-Type': 'text/plain',
+        });
 
-      res.write('route not found');
-      res.end();
-    });
+        res.write('route not found');
+        res.end();
+      });
 
     return;
   }
 
   res.writeHead(400, {
-    'Content-Type': 'text/plain'
+    'Content-Type': 'text/plain',
   });
 
   res.write('bad request');
@@ -44,14 +44,14 @@ router.post('/api/car', function(req, res) {
     var car = new Car(req.body.name, req.body.content);
     storage.createItem('car', car);
     res.writeHead(200, {
-      'Content-Type': 'text/plain'
+      'Content-Type': 'text/plain',
     });
     res.write(JSON.stringify(car));
     res.end();
   } catch (err) {
     console.error(err);
     res.writeHead(400, {
-      'Content-Type': 'text/plain'
+      'Content-Type': 'text/plain',
     });
     res.write('bad request');
     res.end();
