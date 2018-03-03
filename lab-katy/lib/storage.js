@@ -29,14 +29,3 @@ exports.fetchItem = function(schemaName, id) {
     resolve(item);
   });
 };
-
-exports.deleteItem = function(schemaName, id) {
-  
-  if(!schemaName) return Promise.reject(new Error('expected schema name'));
-  if(!id) return Promise.reject(new Error('expected id'));
-
-  var item = storage[schemaName][id];
-  item.delete();
-
-  return Promise.resolve(item);
-};

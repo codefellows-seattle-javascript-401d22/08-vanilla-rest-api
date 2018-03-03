@@ -53,29 +53,6 @@ goblinRouter.post('/api/goblin', function(req, res) {
   }
 });
 
-goblinRouter.delete('/api/gobin?id=', function(req, res) {
-  if(req.url.query.id) {
-    storage.deleteItem('goblin', req.url.query.id)
-      .then( () => {
-        res.writeHead(204, {
-          'Content-Type': 'text/plain',
-        });
-        res.status(204);
-        res.write('no content in the body: goblin has been deleted');
-        res.end();
-      })
-      .catch( err => {
-        console.error(err);
-        res.writeHead(400, {
-          'Content-Type': 'text/plain',
-        });
-        res.write('bad request');
-        res.end();
-      });
-  }
-});
-
-
 const server = http.createServer(goblinRouter.route());
 
 server.listen(PORT, () => {
