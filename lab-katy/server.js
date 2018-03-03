@@ -18,7 +18,7 @@ goblinRouter.get('/api/goblin', function(req, res) {
         res.end();
       })
       .catch( err => {
-        // console.error(err);
+        console.error(err);
         res.writeHead(404, {
           'Content-Type': 'text/plain',
         });
@@ -44,7 +44,7 @@ goblinRouter.post('/api/goblin', function(req, res) {
     res.write(JSON.stringify(goblin));
     res.end();
   } catch (err) {
-    // console.error(err);
+    console.error(err);
     res.writeHead(400, {
       'Content-Type': 'text/plain',
     });
@@ -53,13 +53,14 @@ goblinRouter.post('/api/goblin', function(req, res) {
   }
 });
 
-goblinRouter.delete('/api/gobin', function(req, res) {
+goblinRouter.delete('/api/gobin?id=', function(req, res) {
   if(req.url.query.id) {
     storage.deleteItem('goblin', req.url.query.id)
       .then( () => {
         res.writeHead(204, {
           'Content-Type': 'text/plain',
         });
+        res.status(204);
         res.write('no content in the body: goblin has been deleted');
         res.end();
       })

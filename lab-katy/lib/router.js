@@ -7,7 +7,7 @@ const parseJSON = require('./parse-json.js');
 
 const Router = module.exports = function() {
   this.routes = {
-    GET: {},  //what other properties are on our objects here besides [endpoint]??
+    GET: {},  
     POST: {}, 
     PUT: {}, 
     DELETE: {},

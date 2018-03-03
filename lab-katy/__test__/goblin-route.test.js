@@ -13,10 +13,8 @@ describe('Goblin Routes', function(){
         .send({name: 'test name', type: 'test type'})
         .end((err, res) => {
           if (err) return done(err);
+          console.error(err);
           goblin = JSON.parse(res.text);
-          // console.log('res', res);
-          // console.log('res text', res.text);
-          // console.log('goblin', goblin);
           expect(res.status).toEqual(200);
           expect(goblin.name).toEqual('test name');
           expect(goblin.type).toEqual('test type');
@@ -48,8 +46,7 @@ describe('Goblin Routes', function(){
     it('should return 404 status', function(done){
       request.get(`localhost:3000/api/goblin?id=1`)
         .end((err, res) => {
-          // if(err) return done(err);
-          // console.error('ERROR 404', err);
+          console.error(err);
           expect(res.status).toEqual(404);
           done();
         });
@@ -57,8 +54,7 @@ describe('Goblin Routes', function(){
     it('should return 400 status', function(done){
       request.get(`localhost:3000/api/goblin?id=`)
         .end((err, res) => {
-          // if(err) return done(err);
-          // console.error('ERROR 400', err);
+          console.error('ERROR 400', err);
           expect(res.status).toEqual(400);
           done();
         });
