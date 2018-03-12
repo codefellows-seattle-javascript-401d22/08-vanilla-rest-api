@@ -14,9 +14,6 @@ describe('Car routes', function(){
         .end((err,res) => {
           if (err) return done(err);
           car = JSON.parse(res.text);
-          //console.log('res', res);
-          console.log('res text', res.text);
-          console.log('car', car);
           expect(res.status).toEqual(200);
           expect(car.name).toEqual('test name');
           expect(car.content).toEqual('test content');
